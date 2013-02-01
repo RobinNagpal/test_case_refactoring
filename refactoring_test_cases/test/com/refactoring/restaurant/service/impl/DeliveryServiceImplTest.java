@@ -13,6 +13,7 @@ import com.refactoring.restaurant.domain.Condiment;
 import com.refactoring.restaurant.domain.DeliveryPackage;
 import com.refactoring.restaurant.domain.DeliveryStatus;
 import com.refactoring.restaurant.domain.DeliveryStatus.CommuteMode;
+import com.refactoring.restaurant.domain.DeliveryStatus.STATUS;
 import com.refactoring.restaurant.domain.Item;
 import com.refactoring.restaurant.domain.constants.FoodAversion;
 import com.refactoring.restaurant.service.CondimentService;
@@ -21,6 +22,7 @@ import com.refactoring.restaurant.service.DeliveryService;
 public class DeliveryServiceImplTest {
 	DeliveryService deliveryService = new DeliveryServiceImpl();
 
+	
 	public void testDoExpediteDelivery() {
 
 		Item item = new Item();
@@ -143,8 +145,7 @@ public class DeliveryServiceImplTest {
 
 		DeliveryStatus deliveryStatus = deliveryService.doExpediteDelivery(deliveryPackage);
 
-		Assert.assertEquals(220, deliveryPackage.getPrice());
-		Assert.assertTrue(deliveryStatus.getTimeTaken() < 2 * 60 * 1000 * 60);
+		Assert.assertEquals(STATUS.NOT_ACCEPTED, deliveryStatus.getStatus() );
 		Assert.assertEquals(CommuteMode.CYCLE, deliveryStatus.getCommuteMode());
 
 	}
@@ -193,16 +194,16 @@ public class DeliveryServiceImplTest {
 	public void testGetVegDeliveryPackageForItems() {
 		Item item = new Item();
 		item.setId(20l);
-		item.setName("French Fries");
+		item.setName("Smoothie");
 		item.setPrice(110f);
-		FoodAversion[] foodAversions = { FoodAversion.VEG, FoodAversion.VEGAN };
+		FoodAversion[] foodAversions = { FoodAversion.VEG };
 		item.setFoodAversions(Arrays.asList(foodAversions));
 
 		Item item1 = new Item();
 		item1.setId(30l);
 		item1.setName("Veg Burger");
 		item1.setPrice(110f);
-		FoodAversion[] foodAversions1 = { FoodAversion.NON_VEG };
+		FoodAversion[] foodAversions1 = { FoodAversion.VEG };
 		item1.setFoodAversions(Arrays.asList(foodAversions1));
 
 		List<Item> items = new ArrayList<Item>();
@@ -238,14 +239,14 @@ public class DeliveryServiceImplTest {
 		item.setId(20l);
 		item.setName("French Fries");
 		item.setPrice(110f);
-		FoodAversion[] foodAversions = { FoodAversion.VEG, FoodAversion.VEGAN };
+		FoodAversion[] foodAversions = { };
 		item.setFoodAversions(Arrays.asList(foodAversions));
 
 		Item item1 = new Item();
 		item1.setId(30l);
 		item1.setName("Veg Burger");
 		item1.setPrice(110f);
-		FoodAversion[] foodAversions1 = { FoodAversion.NON_VEG };
+		FoodAversion[] foodAversions1 = { };
 		item1.setFoodAversions(Arrays.asList(foodAversions1));
 
 		List<Item> items = new ArrayList<Item>();
