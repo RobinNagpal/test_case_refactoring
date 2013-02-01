@@ -88,12 +88,12 @@ public class DeliveryServiceImplTest {
 
 	public void testGetVegDeliveryPackageForItems() {
 		// setup 
-		List<Item> items = ItemMother.getVegItems();
+		List<Item> vegItems = ItemMother.getVegItems();
 		CondimentService condimentService = mock(CondimentService.class);
 		initializeCondimentService(condimentService);
 
 		// exercise
-		DeliveryPackage deliveryPackage = deliveryService.getVegDeliveryPackageForItems(items);
+		DeliveryPackage deliveryPackage = deliveryService.getVegDeliveryPackageForItems(vegItems);
 
 		
 		// verify
@@ -108,12 +108,12 @@ public class DeliveryServiceImplTest {
 
 	public void testGetVeganDeliveryPackageForItems() {
 		// setup 
-		List<Item> items = ItemMother.getListOfTwoVegItems();
+		List<Item> veganItems = ItemMother.getListOfTwoVeganItems();
 		CondimentService condimentService = mock(CondimentService.class);
 		initializeCondimentService(condimentService);
 
 		// exercise
-		DeliveryPackage deliveryPackage = deliveryService.getVeganDeliveryPackageForItems(items);
+		DeliveryPackage deliveryPackage = deliveryService.getVeganDeliveryPackageForItems(veganItems);
 
 		// verify
 		List<Condiment> condiments = deliveryPackage.getCondiments();

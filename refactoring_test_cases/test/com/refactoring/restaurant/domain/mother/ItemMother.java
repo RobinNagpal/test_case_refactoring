@@ -9,7 +9,7 @@ import com.refactoring.restaurant.domain.constants.FoodAversion;
 
 public class ItemMother {
 
-	public static List<Item> getListOfTwoVegItems() {
+	public static List<Item> getListOfTwoVeganItems() {
 		Item item = ItemMother.getFrenchFries();
 	
 		Item item1 = ItemMother.getVegBurger();
@@ -20,6 +20,17 @@ public class ItemMother {
 		return items;
 	}
 
+	public static List<Item> getListOfTwoVegItems() {
+		Item item = ItemMother.getSmoothie();
+	
+		Item item1 = ItemMother.getVegBurger();
+	
+		List<Item> items = new ArrayList<Item>();
+		items.add(item);
+		items.add(item1);
+		return items;
+	}
+	
 	public static Item getVegBurger() {
 		Item item1 = new Item();
 		item1.setId(30l);
