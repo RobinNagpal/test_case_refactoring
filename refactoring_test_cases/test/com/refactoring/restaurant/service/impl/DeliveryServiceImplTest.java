@@ -33,7 +33,7 @@ public class DeliveryServiceImplTest {
 		Item item1 = new Item();
 		item1.setId(30l);
 		item1.setName("Chicken Burger");
-		item1.setPrice(110f);
+		item1.setPrice(100f);
 		FoodAversion[] foodAversions1 = { FoodAversion.NON_VEG };
 		item1.setFoodAversions(Arrays.asList(foodAversions1));
 
@@ -46,7 +46,7 @@ public class DeliveryServiceImplTest {
 
 		DeliveryStatus deliveryStatus = deliveryService.doExpediteDelivery(deliveryPackage);
 
-		Assert.assertEquals(320, deliveryPackage.getPrice());
+		Assert.assertEquals(310, deliveryPackage.getPrice());
 		Assert.assertTrue(deliveryStatus.getTimeTaken() < 30 * 1000 * 60);
 		Assert.assertEquals(CommuteMode.BIKE, deliveryStatus.getCommuteMode());
 
