@@ -174,13 +174,12 @@ public class DeliveryServiceImplTest {
 		Condiment condiment = new Condiment();
 		condiment.setName("Mayo");
 		condiment.setWeight(20f);
-		when(condimentService.getCondimentForItem(item)).thenReturn(condiment);
+		when(condimentService.getCondimentWithName("Mayo")).thenReturn(condiment);
 
 		Condiment condiment1 = new Condiment();
 		condiment1.setName("Mustard");
 		condiment1.setWeight(20f);
-		when(condimentService.getCondimentForItem(item1)).thenReturn(condiment1);
-
+		when(condimentService.getCondimentWithName("Mustard")).thenReturn(condiment1);
 		DeliveryPackage deliveryPackage = deliveryService.getDeliveryPackageForItems(items);
 
 		Assert.assertTrue(deliveryPackage.getItems().contains(item));
@@ -212,15 +211,16 @@ public class DeliveryServiceImplTest {
 
 		CondimentService condimentService = mock(CondimentService.class);
 
+
 		Condiment condiment = new Condiment();
 		condiment.setName("Mayo");
 		condiment.setWeight(20f);
-		when(condimentService.getCondimentForItem(item)).thenReturn(condiment);
+		when(condimentService.getCondimentWithName("Mayo")).thenReturn(condiment);
 
 		Condiment condiment1 = new Condiment();
 		condiment1.setName("Mustard");
 		condiment1.setWeight(20f);
-		when(condimentService.getCondimentForItem(item1)).thenReturn(condiment1);
+		when(condimentService.getCondimentWithName("Mustard")).thenReturn(condiment1);
 
 		DeliveryPackage deliveryPackage = deliveryService.getVegDeliveryPackageForItems(items);
 
@@ -258,12 +258,12 @@ public class DeliveryServiceImplTest {
 		Condiment condiment = new Condiment();
 		condiment.setName("Mayo");
 		condiment.setWeight(20f);
-		when(condimentService.getCondimentForItem(item)).thenReturn(condiment);
+		when(condimentService.getCondimentWithName("Mayo")).thenReturn(condiment);
 
 		Condiment condiment1 = new Condiment();
-		condiment1.setName("Mustard");
+		condiment1.setName("Ketchup");
 		condiment1.setWeight(20f);
-		when(condimentService.getCondimentForItem(item1)).thenReturn(condiment1);
+		when(condimentService.getCondimentWithName("Ketchup")).thenReturn(condiment1);
 
 		DeliveryPackage deliveryPackage = deliveryService.getVeganDeliveryPackageForItems(items);
 
