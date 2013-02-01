@@ -5,14 +5,14 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import com.refactoring.restaurant.domain.DeliveryPackage;
 import com.refactoring.restaurant.domain.DeliveryStatus;
 import com.refactoring.restaurant.domain.Item;
+import com.refactoring.restaurant.domain.DeliveryStatus.CommuteMode;
 import com.refactoring.restaurant.domain.mother.ItemMother;
 import com.refactoring.restaurant.service.DeliveryService;
 
-public class DeliveryPackageTimeTest {
+public class DeliveryCommuteModeTest {
 	DeliveryService deliveryService = new DeliveryServiceImpl();
 	int ONE_HOUR = 60 * 1000 * 60;
 	
@@ -25,24 +25,23 @@ public class DeliveryPackageTimeTest {
 	}
 	
 	@Test
-	public void shouldDoNormalDeliveryWithinTwoHours() {
+	public void shouldDoNormalDeliveryOnCycle() {
 
 		// exercise
 		DeliveryStatus deliveryStatus = deliveryService.doExpediteDelivery(deliveryPackage);
 
 		// verify
-		
-		Assert.assertTrue(deliveryStatus.getTimeTaken() < 2 * ONE_HOUR);
+		Assert.assertEquals(CommuteMode.CYCLE, deliveryStatus.getCommuteMode());
 	}
 	
 	@Test
-	public void shouldDoExpediteDeliveryWithinThirtyMinutes() {
+	public void shouldDoExpediteDeliveryOnBike() {
 
 		// exercise
 		DeliveryStatus deliveryStatus = deliveryService.doExpediteDelivery(deliveryPackage);
 
 		// verify
-		Assert.assertTrue(deliveryStatus.getTimeTaken() < .5 * ONE_HOUR);
+		Assert.assertEquals(CommuteMode.BIKE, deliveryStatus.getCommuteMode());
 
 	}
 
