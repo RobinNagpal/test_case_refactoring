@@ -42,7 +42,6 @@ public class DeliveryServiceImplTest {
 		items.add(item1);
 
 		DeliveryPackage deliveryPackage = deliveryService.getDeliveryPackageForItems(items);
-		deliveryPackage.setItems(items);
 
 		DeliveryStatus deliveryStatus = deliveryService.doExpediteDelivery(deliveryPackage);
 
