@@ -64,7 +64,7 @@ public class DeliveryServiceImplTest {
 	}
 
 	@Test
-	public void shouldNotChargeForNormalDelivery() {
+	public void shouldNotChargeMoreForNormalDelivery() {
 		// setup
 		List<Item> items = ItemMother.getListOfItemsWithPrices(110f, 110f);
 		DeliveryPackage deliveryPackage = deliveryService.getDeliveryPackageForItems(items);
@@ -95,7 +95,7 @@ public class DeliveryServiceImplTest {
 	}
 
 	@Test
-	public void testGetVegDeliveryPackageForItems() {
+	public void shouldHaveVegCondimentsOnlyForVegDeliveryPackage() {
 		// setup
 		List<Item> vegItems = ItemMother.getVegItems();
 		CondimentService condimentService = mock(CondimentService.class);
@@ -110,7 +110,7 @@ public class DeliveryServiceImplTest {
 	}
 
 	@Test
-	public void testGetVeganDeliveryPackageForItems() {
+	public void shouldHaveVeganCondimentsOnlyForVeganDeliveryPackage() {
 		// setup
 		List<Item> veganItems = ItemMother.getListOfTwoVeganItems();
 		CondimentService condimentService = mock(CondimentService.class);
